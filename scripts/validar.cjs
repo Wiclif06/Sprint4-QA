@@ -13,4 +13,15 @@ const ct=new Set(r.executions.flatMap(e=>e.name.match(/CT\d{3}/g)||[]));assert.e
 assert.ok(r.executions.every(e=>e.assertions.every(a=>a.passed)));
 const load=json('evidencias/desempenho.json');assert.equal(load.stages.reduce((n,s)=>n+s.total,0),330);assert.ok(load.passed);
 assert.ok(fs.statSync(path.join(root,'evidencias/execucao-qa.mp4')).size>0);
-console.log('Pacote conferido: 49 casos / 34 PBIs / 33 requisições / 53 asserções aprovadas / 330 chamadas de carga / vídeo presente.');
+const stress=json('evidencias/estresse.json');
+assert.deepEqual(stress.stages.map(s=>s.concurrency),[1,10,50,100,1]);
+assert.equal(stress.stages.at(-1).phase,'recovery');
+assert.ok(stress.passed);
+for(const s of stress.stages){
+ assert.ok(s.total>0);assert.equal(s.samples.length,s.total);
+ assert.equal(s.errors,0);assert.ok(s.samples.every(x=>x.ok&&x.status===200));
+ const times=s.samples.map(x=>x.ms).sort((a,b)=>a-b);
+ assert.equal(s.p95Ms,times[Math.ceil(times.length*.95)-1]);
+ assert.ok(s.p95Ms<stress.criteria.maxP95Ms);
+}
+console.log('Pacote conferido: 49 casos / 34 PBIs / 33 requisições / 53 asserções / carga e estresse limitado aprovados / vídeo presente.');

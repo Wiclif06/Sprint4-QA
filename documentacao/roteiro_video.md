@@ -1,9 +1,15 @@
-# Vídeo da automação
+# Roteiro do vídeo
 
-Arquivo: `evidencias/execucao-qa.mp4`.
+Mostre a preparação, a configuração, a execução e os resultados dos testes, conforme as páginas 46–47 do enunciado.
 
-O vídeo mostra configuração do ambiente local, base isolada, ferramenta Newman, exemplo de asserção, início da coleção, progressão dos testes e resultado final. Os tokens e a senha não aparecem. O painel próprio recebe eventos reais do Newman.
+1. **Apresentação:** identifique o grupo e o PetJourney. Abra a branch `develop` e os links de entrega.
+2. **Preparação:** mostre a API local iniciada, o endereço e a base QA isolada. Importe a coleção e o ambiente no Postman. Oculte senhas e tokens.
+3. **Configuração:** mostre pelo menos quatro cenários e suas asserções. Sugestão: login (CT001), acesso sem token (CT006), cadastro e consulta de pet (CT008), atualização (CT009) e exclusão (CT010).
+4. **Execução:** rode a coleção inteira no Collection Runner ou execute `npm test` com Newman. Mantenha os resultados da ferramenta visíveis.
+5. **Desempenho e estresse:** execute `npm run test:load` e `npm run test:stress`. Mostre as etapas, latências, erros e recuperação. Informe que o ambiente é local com SQLite.
+6. **Resultados:** confira o total de requisições, asserções e falhas. Explique o HTTP 503 esperado no CT018 e o HTTP 404 nos casos de isolamento. Se ocorrer falha, investigue antes de concluir a gravação.
+7. **Entrega:** publique o vídeo, confira se o link abre sem pedir autorização e atualize README.md e ENTREGA.md.
 
-São capturas periódicas do navegador, com duração preservada e sem áudio. O vídeo não simula a interface do Postman. O enunciado de QA solicita preparação, configuração, execução e resultados; não especifica narração nem plataforma de hospedagem.
+A coleção contém 19 cenários funcionais em 33 requisições, com 53 asserções. Os números exibidos devem corresponder à execução gravada.
 
-Se for necessário gravar nova demonstração com apresentação do grupo, importar a coleção no Postman, selecionar o ambiente QA, mostrar quatro ou mais cenários e executar a coleção inteira. Não alterar os resultados esperados para esconder falhas.
+O vídeo já incluído, `evidencias/execucao-qa.mp4`, registra a execução anterior em um painel alimentado pelo Newman, sem áudio. O novo ensaio de estresse não aparece nessa gravação. Para uma nova apresentação, mostre diretamente a ferramenta e os comandos acima.

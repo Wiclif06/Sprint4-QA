@@ -1,18 +1,35 @@
-# Conferência com o enunciado
+# Requisitos — QA Sprint 4
 
-Fonte: 2TDS Fevereiro — Challenge 2026 — 2º Semestre, páginas 46–47, QA Sprint 4.
+Fonte: Challenge 2026, páginas 46–47. Conferência em 26/10/2026 com os arquivos e os critérios de aceitação do Azure.
 
-| Exigência | Evidência nesta entrega | Situação |
+| Requisito | Evidência | Situação |
 |---|---|---|
-| Plano manual no Azure Boards com funcionalidades principais | 49 casos ligados aos 34 PBIs existentes, IDs 510–558 | Publicado; conferir links do índice |
-| Objetivos dos testes — 20% | Campo Objetivo / cenário em cada caso | Preparado |
-| Dados de entrada — 20% | Entradas sintéticas e pré-condições; IDs capturados em execução | Preparado; módulos externos dependem dos contratos indicados |
-| Saídas esperadas — 20% | Resultado específico por caso; regras desconhecidas explicitamente bloqueadas | Preparado; regras comerciais pendentes nos casos afetados |
-| Procedimentos — 20% | Passos numerados em cada caso | Preparado |
-| Coerência com release e tarefas | Parent/Child aos PBIs reais; Sprint 4 de validação; matriz de rastreabilidade | Vinculado ao backlog observado |
-| Pelo menos quatro casos automatizados — 20% | CT001–CT019: 33 requisições, 53 asserções, zero falhas | Executado localmente |
-| Vídeo com preparação, configuração, execução e resultados | evidencias/execucao-qa.mp4, capturas reais do painel Newman | Produzido |
-| GitHub público na branch develop e links Azure/vídeo | README e ENTREGA com os links finais | Publicado; repositório público e develop verificados |
-| Professor com Basic e administrador no projeto | Identidade do professor não informada | Pendente de confirmação |
+| Plano manual no Azure Boards | 49 casos, IDs 510–558; 48 na Sprint 4 e CT029 complementar | Publicado |
+| Objetivos — 20% | Objetivo e requisito vinculados em cada caso | Documentado |
+| Entradas controladas — 20% | Massa, pré-condições, datas e fronteiras | Documentado |
+| Saídas esperadas — 20% | Resultados específicos conforme critérios dos PBIs | Documentado |
+| Procedimentos — 20% | Passos numerados em cada caso | Documentado |
+| Coerência com release e tarefas | Rastreabilidade de 34 PBIs; franquia fora das entregas 3/4 | Conferido |
+| Pelo menos 4 casos automatizados — 20% | 19 cenários, 33 requisições e 53 asserções aprovadas | Executado |
+| Integração, desempenho e estresse de API | Regressão Newman, carga no health check e rampa autenticada de pets | Executado em ambiente local |
+| Vídeo: preparação, configuração, execução e resultados | Vídeo funcional incluído; roteiro para nova gravação com carga e estresse | Atualizar a apresentação |
+| Repositório público e branch develop | README com Azure e vídeo; arquivos na develop | Publicado |
+| Professor administrador do projeto | Douglas Andrade, conta confirmada pelo grupo, no grupo Project Administrators | Confirmado |
+| Professor com licença Basic na organização | Conta do professor aparece como Stakeholder | Pendente |
 
-O PDF não exige 22 casos, Test Plans, uma ferramenta de captura específica, narração nem YouTube para QA. Os 49 casos cobrem o backlog atual e preservam os 22 cenários recebidos. Não foi suposto que funcionalidades Java/Mobile/SmartCare estejam validadas por testes .NET.
+## Correções do plano
+
+- **CT022/CT040/CT042:** contrato, pontuação, faixas, exemplos e desempate do SmartCare conforme PBIs 453, 459 e 462.
+- **CT035:** cancelamento somente com mais de 24 horas; fronteiras de 23h59min59s, 24h e 24h00min01s, conforme PBI 434.
+- **CT044:** idade pela regra TRUNC/MONTHS_BETWEEN; NULL e futuro retornam NULL e registram os códigos previstos, conforme PBI 470.
+- **CT045:** soma dos pesos, subtotais, filtros e tratamento de nulos, conforme PBI 473.
+- **CT029:** valores do backlog preservados. O PBI 402 está explicitamente fora das entregas 3 e 4; o caso permanece complementar, sem ser requisito de conclusão desta sprint.
+
+## Pendências de entrega
+
+1. Um administrador da organização deve alterar Douglas Andrade de **Stakeholder** para **Basic**, em Organization settings > Users. A conta conectada de Felipe não disponibiliza essa alteração.
+2. Gravar a apresentação atualizada seguindo `roteiro_video.md`, conferir o acesso ao link e enviar a entrega no portal FIAP.
+
+## Alcance da verificação
+
+O PDF exige plano manual e demonstração automatizada. Os casos de outros módulos estão planejados; sua execução depende dos respectivos ambientes. A aprovação dos testes locais não certifica Oracle, Java, Mobile, Web, SmartCare ou produção. O caso Oracle real continua sem execução.

@@ -1,9 +1,9 @@
-# Plano de validação da Sprint 4
+# Plano de validação
 
-O backlog real contém 34 PBIs, além de épicos, features e tarefas. A exportação de referência foi obtida antes da publicação dos casos em 26/10/2026. Os títulos, responsáveis e estados de desenvolvimento existentes foram preservados.
+O plano liga 49 casos aos 34 PBIs do backlog: 48 casos de validação na Sprint 4 e CT029 complementar. O PBI 402, sobre franquia, informa que está fora das entregas 3 e 4; por isso, sua tarefa QA permanece na raiz PetJourney, fora da iteração Sprint 4.
 
-A revisão usa a Sprint 4 como iteração de validação dos 49 casos. O vínculo Parent/Child aponta para o requisito de produto correspondente. Casos que complementam a API .NET, como lembretes e timeline, estão associados à capacidade de acompanhamento dos pets; essa relação não afirma que a mesma implementação existe no aplicativo Java/Mobile.
+Os critérios de cancelamento, SmartCare e rotinas Oracle foram conferidos nos PBIs 434, 453, 459, 462, 470 e 473. O estado do PBI registra o trabalho de desenvolvimento e não comprova execução dos casos de QA.
 
-Sequência: preparar massa isolada; validar identidade e escopo; executar cadastro e alterações; consultar lembretes/timeline; limpar apenas os registros criados; registrar resultados; demonstrar automação; conferir links e acesso do professor; submeter a entrega.
+Sequência de execução: preparar massa isolada; validar identidade e escopo; testar cadastros e alterações; consultar lembretes e timeline; remover os registros de teste; executar carga e estresse; registrar resultados; demonstrar a automação; conferir links e acesso do professor; enviar a entrega.
 
-Capacidade e datas históricas não foram inventadas. As tarefas manuais permanecem To Do porque não há registro de execução humana. As evidências da automação são identificadas separadamente no conteúdo dos casos.
+Os casos permanecem planejados até que sua execução manual seja registrada. Os resultados automatizados estão identificados separadamente. Os vínculos de testes .NET com capacidades do produto não atestam validação das implementações Java ou Mobile.

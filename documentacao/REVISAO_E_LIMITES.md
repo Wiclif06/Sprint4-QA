@@ -1,28 +1,26 @@
-# Revisão e limites verificados
+# Verificação técnica
 
-## Correções do pacote de QA
+Conferência de 26/10/2026.
 
-- Atualização da referência para a API .NET Sprint 4 revisada.
-- IDs obtidos das respostas; fixture isolada e verificação de listas não vazias.
-- Lembrete criado no pet da própria execução, em vez de gravar sobre o pet fixo da demonstração.
-- Confirmação por GET após criação, edição e exclusão; limpeza na ordem das dependências.
-- Isolamento validado em detalhe, lembretes e timeline de outro tutor, com HTTP 404 nos três acessos.
-- Diagnóstico detalhado de health usa ADMIN_SISTEMA, conforme autorização da API; readiness retorna 503 quando a clínica está ausente.
-- Rastreabilidade substituída por IDs reais: 49 casos ligados aos 34 PBIs.
-- Relatório público sanitizado, dependência Newman fixada e scripts propagando falhas.
+| Verificação | Resultado |
+|---|---|
+| Instalação pelo lockfile npm | Concluída |
+| Compilação .NET Release | 0 erros e 0 avisos |
+| Testes .NET | 151 testes distintos aprovados; 1 Oracle real ignorado |
+| Regressão Newman | 33 requisições, 53 asserções, 0 falhas |
+| Carga do health check | 330 requisições, concorrências 1/5/20, 0 erros |
+| Estresse limitado de GET /api/pets | 3.200 consultas autenticadas; rampa 1/10/50/100 e recuperação com 1; 0 erros |
+| p95 no pico / recuperação | 737,82 ms / 20,59 ms |
+| Plano manual | 49 casos com objetivos, entradas, passos e saídas; 48 na Sprint 4 e 1 complementar |
 
-## Resultados
+A nova regressão usou uma base SQLite descartável em Development. O relatório funcional incluído permanece associado à gravação original; a repetição confirmou os mesmos 33 pedidos e 53 asserções aprovadas. Os testes MongoDB foram executados separadamente contra uma instância real local. Oracle não foi configurado.
 
-A API incluída também foi compilada novamente: zero avisos e zero erros. Seus testes tiveram 151 aprovações e um caso Oracle ignorado; o MongoDB foi executado localmente. A restauração com consulta ao NuGet oficial concluiu sem avisos. Relatórios: `evidencias/dotnet-build.log`, `dotnet-restore.log` e `dotnet-testes.json`.
+O ensaio de estresse confere resposta HTTP e conteúdo dos pets, com p95 abaixo de 1 segundo e zero erros. A emissão é limitada por tempo e quantidade. Não houve saturação nos limites configurados; não se determinou capacidade máxima nem SLA de produção.
 
-Regressão gravada em 2026-10-26T19:10:14.404Z: 33 requisições, 53 asserções, zero falhas. Fonte: `evidencias/newman-resultados.json`.
-
-Ensaio de carga: 330 chamadas GET /health/live; concorrências 1, 5 e 20; sem erros. Os critérios foram p95 menor que 1 segundo e nenhum erro, definidos no script antes da execução. Este ensaio curto de liveness não determina capacidade máxima, estresse até saturação, desempenho de banco nem SLA de produção.
-
-O vídeo é formado por capturas periódicas da tela durante a execução real, mantendo seus intervalos. Não há áudio nem resultados simulados. O JSON e os scripts permitem conferir os resultados sem depender só do vídeo.
+As dependências transitivas do Newman emitiram avisos de descontinuação na instalação. A instalação e a execução concluíram. Esses avisos não foram tratados como resultado de auditoria de vulnerabilidades.
 
 ## Limites
 
-Execução em Windows, API .NET Development, SQLite demo novo. Oracle real, integração clínica, Java, Mobile, Web, SmartCare e nuvem não foram executados nesta revisão. Testes manuais humanos não foram declarados como feitos. O PDF pede plano manual e demonstração automatizada; eventual exigência adicional do professor deve ser confirmada.
+A verificação cobre a API .NET local e os artefatos de QA. Não inclui execução Oracle, integração clínica disponível, Java, Mobile, Web, SmartCare ou nuvem. O CT018 valida a indisponibilidade esperada da API clínica, com HTTP 503. Os casos manuais não foram marcados como executados por uma pessoa.
 
-O alerta do pacote anterior sobre leitura cruzada não se reproduziu na versão revisada: listagem, detalhe, lembretes e timeline foram protegidos nos casos executados. Isso não equivale a auditoria completa de segurança.
+Os critérios do Azure corrigiram as saídas de SmartCare, cancelamento, idade e pesos. A franquia foi mantida como caso complementar porque o requisito original está fora das entregas 3 e 4. Consulte a matriz de requisitos para as pendências de licença e apresentação.
