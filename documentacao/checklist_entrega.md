@@ -5,7 +5,7 @@
 - [x] 49 casos cadastrados e vinculados no Azure.
 - [x] Regressão local executada com mais de quatro casos.
 - [x] Vídeo real e resultados preservados.
-- [ ] Confirmar publicação final na branch develop e acesso aos links.
+- [x] Publicação confirmada em repositório público, branch padrão develop; README recuperado pelo conector GitHub.
 - [ ] Confirmar Basic e Project Administrator para o professor identificado.
 - [ ] Executar os casos dependentes de módulos e regras ainda não disponibilizados.
 - [ ] Submeter no portal FIAP.

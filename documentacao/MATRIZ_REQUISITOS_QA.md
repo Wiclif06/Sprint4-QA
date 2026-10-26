@@ -12,7 +12,7 @@ Fonte: 2TDS Fevereiro — Challenge 2026 — 2º Semestre, páginas 46–47, QA 
 | Coerência com release e tarefas | Parent/Child aos PBIs reais; Sprint 4 de validação; matriz de rastreabilidade | Vinculado ao backlog observado |
 | Pelo menos quatro casos automatizados — 20% | CT001–CT019: 33 requisições, 53 asserções, zero falhas | Executado localmente |
 | Vídeo com preparação, configuração, execução e resultados | evidencias/execucao-qa.mp4, capturas reais do painel Newman | Produzido |
-| GitHub público na branch develop e links Azure/vídeo | README e ENTREGA com os links finais | Conferir publicação remota final |
+| GitHub público na branch develop e links Azure/vídeo | README e ENTREGA com os links finais | Publicado; repositório público e develop verificados |
 | Professor com Basic e administrador no projeto | Identidade do professor não informada | Pendente de confirmação |
 
 O PDF não exige 22 casos, Test Plans, uma ferramenta de captura específica, narração nem YouTube para QA. Os 49 casos cobrem o backlog atual e preservam os 22 cenários recebidos. Não foi suposto que funcionalidades Java/Mobile/SmartCare estejam validadas por testes .NET.
