@@ -4,7 +4,7 @@ Plano de testes e automação de APIs do PetJourney.
 
 - [Azure Boards](https://dev.azure.com/RM563254/PetJourney/_workitems) · [49 casos de teste](azure-boards/casos_publicados.csv)
 - [Vídeo da automação](https://github.com/Wiclif06/Sprint4-QA/raw/refs/heads/develop/evidencias/execucao-qa.mp4)
-- [Resultados](evidencias/README.md) · [Requisitos e pendências](documentacao/MATRIZ_REQUISITOS_QA.md)
+- [Resultados](evidencias/README.md) · [Rastreabilidade](documentacao/matriz_rastreabilidade.csv) · [Plano de validação](documentacao/release_plan.md)
 
 ## Executar
 
@@ -27,7 +27,7 @@ npm run verify
 
 A senha pertence à demonstração local. O script inicia a API em `http://127.0.0.1:5188` com uma nova base SQLite. Encerre com Ctrl+C.
 
-Para usar o Postman ou gravar a apresentação, consulte o [guia de execução](documentacao/EXECUCAO.md) e o [roteiro do vídeo](documentacao/roteiro_video.md).
+As instruções de uso do Postman e dos testes estão no [guia de execução](documentacao/EXECUCAO.md).
 
 ## Conteúdo
 
@@ -39,7 +39,7 @@ Para usar o Postman ou gravar a apresentação, consulte o [guia de execução](
 | `scripts/` | Automação, carga e estresse limitado |
 | `evidencias/` | Resultados, prints e vídeo |
 | `api/` | API .NET e testes |
-| `documentacao/` | Rastreabilidade, execução e conferência da entrega |
+| `documentacao/` | Execução, rastreabilidade e plano de validação |
 
 ## Integrantes
 

@@ -32,10 +32,10 @@ A carga e o estresse usam p95 abaixo de 1 segundo e zero erros como critérios l
 4. Confirme `baseUrl=http://127.0.0.1:5188` e execute a coleção completa, na ordem, pelo Collection Runner.
 5. Confira as asserções e os códigos HTTP. O CT018 espera HTTP 503 porque a API clínica não está configurada nesse ambiente.
 
-Os casos de isolamento esperam HTTP 404 para dados de outro tutor. Esses códigos esperados não são falhas do teste. Após a gravação, não exporte o ambiente com senhas ou tokens preenchidos.
+Os casos de isolamento esperam HTTP 404 para dados de outro tutor. Esses códigos esperados não são falhas do teste. Exporte o ambiente com senhas e tokens em branco.
 
 ## Escopo
 
 Ambiente Development com SQLite. Oracle, integração clínica disponível, Java, Mobile, Web, SmartCare e nuvem dependem de seus próprios ambientes. A execução automática não representa execução humana do plano manual.
 
-`npm test` e os ensaios sobrescrevem seus relatórios. Se gravar um novo vídeo, publique os resultados correspondentes e atualize o link no README e em ENTREGA.md.
+`npm test` e os ensaios sobrescrevem seus relatórios em `evidencias/`. O vídeo e os relatórios devem identificar a execução correspondente.
