@@ -1,0 +1,17 @@
+{
+  "name": "petjourney-qa-sprint4",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plano de QA e regressão reproduzível do PetJourney",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node scripts/executar.cjs",
+    "test:load": "node scripts/desempenho.cjs",
+    "verify": "node scripts/validar.cjs"
+  },
+  "dependencies": {
+    "newman": "6.2.1"
+  }
+}

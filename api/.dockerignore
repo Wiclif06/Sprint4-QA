@@ -1,0 +1,8 @@
+**/bin
+**/obj
+**/logs
+**/TestResults
+**/*.db*
+.env
+**/appsettings.Local.json
+evidencias

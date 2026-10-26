@@ -1,0 +1,7 @@
+  Determinando os projetos a serem restaurados...
+  .\api\src\PetJourney.Application\PetJourney.Application.csproj restaurado (em 157 ms).
+  .\api\src\PetJourney.Domain\PetJourney.Domain.csproj restaurado (em 144 ms).
+  .\api\tests\PetJourney.UnitTests\PetJourney.UnitTests.csproj restaurado (em 1,48 seg).
+  .\api\src\PetJourney.Infrastructure\PetJourney.Infrastructure.csproj restaurado (em 1,49 seg).
+  .\api\tests\PetJourney.IntegrationTests\PetJourney.IntegrationTests.csproj restaurado (em 1,26 seg).
+  .\api\src\PetJourneyTutorApi\PetJourneyTutorApi.csproj restaurado (em 1,26 seg).

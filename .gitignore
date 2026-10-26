@@ -1,0 +1,9 @@
+node_modules/
+.env
+*.db
+*.db-shm
+*.db-wal
+**/bin/
+**/obj/
+**/logs/
+ambiente-local.json

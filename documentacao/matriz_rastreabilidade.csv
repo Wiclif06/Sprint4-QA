@@ -1,0 +1,35 @@
+﻿PBI Azure,Requisito,Estado observado no Azure,Casos planejados,Validação
+382,PBI-003 - Entrar com perfil autorizado,Done,CT001; CT002; CT003,Sprint 4; estado do PBI não comprova execução nesta revisão
+385,PBI-004 - Isolar dados por clínica e titular,Done,CT006; CT019,Sprint 4; estado do PBI não comprova execução nesta revisão
+388,PBI-045 - Ativar conta pelo primeiro acesso,Done,CT026,Sprint 4; estado do PBI não comprova execução nesta revisão
+391,PBI-029 - Restaurar e encerrar sessão no app,Committed,CT027,Sprint 4; estado do PBI não comprova execução nesta revisão
+395,PBI-005 - Cadastrar clínica e administrador,Done,CT028,Sprint 4; estado do PBI não comprova execução nesta revisão
+398,PBI-006 - Gerenciar veterinários,Done,CT023,Sprint 4; estado do PBI não comprova execução nesta revisão
+402,PBI-014 - Apurar tutores excedentes por clínica,New,CT029,Sprint 4; estado do PBI não comprova execução nesta revisão
+407,PBI-007 - Gerenciar tutores,Done,CT030,Sprint 4; estado do PBI não comprova execução nesta revisão
+410,PBI-008 - Cadastrar e editar pets,Done,CT004; CT005; CT007; CT008; CT009; CT010; CT011; CT012; CT013; CT014; CT015; CT016,Sprint 4; estado do PBI não comprova execução nesta revisão
+413,PBI-046 - Cadastrar tutor e pet juntos,Done,CT031,Sprint 4; estado do PBI não comprova execução nesta revisão
+416,PBI-047 - Desativar sem apagar histórico,Done,CT032,Sprint 4; estado do PBI não comprova execução nesta revisão
+420,PBI-049 - Registrar prescrição no prontuário,Committed,CT033,Sprint 4; estado do PBI não comprova execução nesta revisão
+423,PBI-050 - Consultar relatório da consulta em PDF,Committed,CT021,Sprint 4; estado do PBI não comprova execução nesta revisão
+428,PBI-009 - Publicar horários disponíveis,Committed,CT034,Sprint 4; estado do PBI não comprova execução nesta revisão
+431,PBI-010 - Reservar consulta pelo tutor,Committed,CT020,Sprint 4; estado do PBI não comprova execução nesta revisão
+434,PBI-011 - Cancelar consulta com antecedência,Committed,CT035,Sprint 4; estado do PBI não comprova execução nesta revisão
+437,PBI-012 - Reagendar com confirmação do resultado,New,CT036,Sprint 4; estado do PBI não comprova execução nesta revisão
+440,PBI-013 - Notificar cancelamento por e-mail,Done,CT037,Sprint 4; estado do PBI não comprova execução nesta revisão
+444,PBI-048 - Registrar prontuário da consulta,Committed,CT038,Sprint 4; estado do PBI não comprova execução nesta revisão
+448,PBI-015 - Cadastros e agenda na web,New,CT039,Sprint 4; estado do PBI não comprova execução nesta revisão
+453,PBI-041 - Especificar a priorização SmartCare,New,CT040,Sprint 4; estado do PBI não comprova execução nesta revisão
+456,PBI-052 - Preparar os fatos de acompanhamento,New,CT041,Sprint 4; estado do PBI não comprova execução nesta revisão
+459,PBI-053 - Calcular prioridade de acompanhamento,New,CT022,Sprint 4; estado do PBI não comprova execução nesta revisão
+462,PBI-054 - Exibir fila de acompanhamento,New,CT042,Sprint 4; estado do PBI não comprova execução nesta revisão
+467,PBI-032 - Emitir relação de pets em JSON,Committed,CT043,Sprint 4; estado do PBI não comprova execução nesta revisão
+470,PBI-033 - Calcular idade do pet em meses,Done,CT044,Sprint 4; estado do PBI não comprova execução nesta revisão
+473,PBI-051 - Conferir pesos por espécie e sexo,Done,CT045,Sprint 4; estado do PBI não comprova execução nesta revisão
+477,PBI-034 - Auditar mudanças em agendamentos,Done,CT046,Sprint 4; estado do PBI não comprova execução nesta revisão
+482,PBI-016 - Persistir o núcleo do atendimento,Done,CT047,Sprint 4; estado do PBI não comprova execução nesta revisão
+485,PBI-037 - Executar a API em nuvem,Committed,CT048,Sprint 4; estado do PBI não comprova execução nesta revisão
+489,PBI-020 - Monitorar saúde e falhas da API .NET,New,CT017; CT018,Sprint 4; estado do PBI não comprova execução nesta revisão
+492,PBI-023 - Automatizar regressão da API .NET,New,CT024,Sprint 4; estado do PBI não comprova execução nesta revisão
+497,PBI-043 - Testar o fluxo completo,New,CT025,Sprint 4; estado do PBI não comprova execução nesta revisão
+500,PBI-044 - Preparar a entrega,New,CT049,Sprint 4; estado do PBI não comprova execução nesta revisão

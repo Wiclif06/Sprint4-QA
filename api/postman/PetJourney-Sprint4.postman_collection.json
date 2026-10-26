@@ -1,0 +1,132 @@
+{
+  "info": {
+    "name": "PetJourney Sprint 4",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5187"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "petId",
+      "value": "1"
+    },
+    {
+      "key": "username",
+      "value": "dr.joao@petjourney.com"
+    },
+    {
+      "key": "password",
+      "value": "123456"
+    }
+  ],
+  "item": [
+    {
+      "name": "Login local",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/auth/login",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"{{username}}\", \"password\": \"{{password}}\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('login retorna 200', () => pm.response.to.have.status(200));",
+              "if (pm.response.code === 200) pm.collectionVariables.set('token', pm.response.json().token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pets paginados",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/pets?sortBy=name&page=1&pageSize=10",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Lembretes filtrados",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/lembretes?status=PENDENTE&sortBy=date",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Eventos do pet",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/pets/{{petId}}/eventos?pageSize=10",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Criar evento clínico",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/pets/{{petId}}/eventos",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"type\": \"Consulta\", \"description\": \"Acompanhamento clínico da Sprint 4\"}"
+        }
+      }
+    },
+    {
+      "name": "Readiness",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health/ready",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    }
+  ]
+}

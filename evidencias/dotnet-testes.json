@@ -1,0 +1,659 @@
+{
+  "environment": "Windows / .NET 8 / MongoDB real local na porta 27029; sem Oracle real",
+  "total": 152,
+  "passed": 151,
+  "runs": [
+    {
+      "counters": {
+        "total": "28",
+        "executed": "28",
+        "passed": "28",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "tests": [
+        {
+          "test": "PetJourney.UnitTests.Application.AuthServiceTests.ValidScope_ContaConfigurada_ValidaPerfil(role: \"VETERINARIO\", clinic: 1, tutor: null, vet: 1, expected: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.CanOwnPet_PerfilEEscopo_ImpedeAcessoIndevido(role: \"TUTOR\", tutor: 1, clinic: null, petTutor: 1, petClinic: 2, expected: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.ValidateReminder_DataEStatus_ValidaLimites(offset: 1, status: \"INVALIDO\", valid: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Application.AuthServiceTests.ValidScope_ContaConfigurada_ValidaPerfil(role: \"ADMIN_CLINICA\", clinic: 1, tutor: null, vet: null, expected: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.ValidateReminder_DataEStatus_ValidaLimites(offset: 1, status: \"CONCLUIDO\", valid: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.ValidatePet_DadosInformados_RespeitaRegras(name: \"Rex\", sex: \"F\", year: 2030, valid: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Application.AuthServiceTests.ValidScope_ContaConfigurada_ValidaPerfil(role: \"VETERINARIO\", clinic: 1, tutor: null, vet: null, expected: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.CanOwnPet_PerfilEEscopo_ImpedeAcessoIndevido(role: \"ADMIN_CLINICA\", tutor: null, clinic: 1, petTutor: 1, petClinic: 2, expected: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Application.AuthServiceTests.Login_SenhaInformada_EmiteTokenSomenteSeCorreta(password: \"123456\", expected: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Application.AuthServiceTests.Login_SenhaInformada_EmiteTokenSomenteSeCorreta(password: \"errada\", expected: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.CanOwnPet_PerfilEEscopo_ImpedeAcessoIndevido(role: \"ADMIN_CLINICA\", tutor: null, clinic: 1, petTutor: 1, petClinic: 1, expected: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.ValidatePet_DadosInformados_RespeitaRegras(name: \"Rex\", sex: \"M\", year: 2020, valid: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Application.AuthServiceTests.ValidScope_ContaConfigurada_ValidaPerfil(role: \"TUTOR\", clinic: 1, tutor: 1, vet: null, expected: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.ValidatePet_DadosInformados_RespeitaRegras(name: \"Rex\", sex: \"X\", year: 2020, valid: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.CanOwnPet_PerfilEEscopo_ImpedeAcessoIndevido(role: \"ADMIN_SISTEMA\", tutor: null, clinic: null, petTutor: 1, petClinic: 2, expected: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.CanOwnPet_PerfilEEscopo_ImpedeAcessoIndevido(role: \"VETERINARIO\", tutor: null, clinic: 1, petTutor: 1, petClinic: 1, expected: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Application.AuthServiceTests.ValidScope_ContaConfigurada_ValidaPerfil(role: \"ADMIN_SISTEMA\", clinic: null, tutor: null, vet: null, expected: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Application.AuthServiceTests.Login_UsuarioInexistente_RetornaNulo",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.CanOwnPet_PerfilEEscopo_ImpedeAcessoIndevido(role: \"TUTOR\", tutor: 1, clinic: null, petTutor: 2, petClinic: 2, expected: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Application.AuthServiceTests.ValidScope_ContaConfigurada_ValidaPerfil(role: \"TUTOR\", clinic: null, tutor: 1, vet: null, expected: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Application.AuthServiceTests.ValidScope_ContaConfigurada_ValidaPerfil(role: \"ADMIN_CLINICA\", clinic: null, tutor: null, vet: null, expected: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Application.AuthServiceTests.ValidScope_ContaConfigurada_ValidaPerfil(role: \"ROOT\", clinic: null, tutor: null, vet: null, expected: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.ValidateReminder_DataEStatus_ValidaLimites(offset: 1, status: \"CANCELADO\", valid: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.ValidateReminder_DataEStatus_ValidaLimites(offset: -1, status: \"PENDENTE\", valid: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.CanOwnPet_PerfilEEscopo_ImpedeAcessoIndevido(role: \"\", tutor: null, clinic: null, petTutor: 1, petClinic: 2, expected: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.ValidateReminder_DataEStatus_ValidaLimites(offset: 0, status: \"PENDENTE\", valid: True)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.ValidatePet_DadosInformados_RespeitaRegras(name: \"\", sex: \"M\", year: 2020, valid: False)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.UnitTests.Domain.CareRulesTests.CanOwnPet_PerfilEEscopo_ImpedeAcessoIndevido(role: \"TUTOR\", tutor: null, clinic: null, petTutor: 1, petClinic: 2, expected: False)",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "counters": {
+        "total": "124",
+        "executed": "123",
+        "passed": "123",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "tests": [
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Filters_ApplyToAllMainCollections(path: \"/api/lembretes?type=VACINA\", property: \"idLembrete\", id: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Clinic_CannotReadOtherClinic(path: \"/api/lembretes/2\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.FilterSortAndLinks_PreserveQueryAndScope",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_RecursoDeOutroTutor_Retorna404(path: \"/api/pets/2\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.ExceptionHandler_ClassifiesAndLogsWithoutExposingDetails(kind: \"write\", expected: 500)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/racas/1\", expected: 200)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.InvalidQuery_Returns400(path: \"/api/lembretes?from=2026-12-01&to=2026-01-01\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Filters_ApplyToAllMainCollections(path: \"/api/clinicas?name=Feliz\", property: \"idClinica\", id: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_RecursoDeOutroTutor_Retorna404(path: \"/api/pets/2/lembretes\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ArchitectureAndOracleTests.DomainAndApplication_DoNotReferencePersistenceOrHttpFrameworks",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_SemToken_Retorna401(path: \"/health\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/especies\", expected: 200)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/pets/1/lembretes\", expected: 200)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Filters_ApplyToAllMainCollections(path: \"/api/tutores?email=ana%40petjourney.com\", property: \"idTutor\", id: 2)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.DistantPage_ReturnsEmptyArrayWithoutOverflow(path: \"/api/lembretes\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.InvalidQuery_Returns400(path: \"/api/pets?page=0\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PutPet_DadosValidos_AtualizaSemMudarTitular",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.InvalidQuery_Returns400(path: \"/api/pets?pageSize=101\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/racas\", expected: 200)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.DistantPage_ReturnsEmptyArrayWithoutOverflow(path: \"/api/pets\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PetELembrete_FluxoCrud_PersisteEProtegeExclusao",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/pets/1/timeline?mes=13&ano=2026\", expected: 400)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Clinic_CannotReadOtherClinic(path: \"/api/clinicas/2\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.ResourceResponses_ExposeResolvableSelfLinks(path: \"/api/lembretes/1\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Events_RecordActualAuthorAndResolvableLocation(username: \"admin.sistema@petjourney.com\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.EventContent_IsValidatedAfterTrimming(type: \" a\", description: \"valid description\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Health_DependenciasDisponiveis_Retorna200(path: \"/health/live\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PostPet_Veterinario_Retorna403",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/tutores/1/pets\", expected: 200)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PostPet_CatalogoOuSexoInvalido_Retorna400(species: 2, breed: 1, sex: \"M\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.GetPets_Paginado_RetornaLinkSelf",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PostTutor_AdminClinica_VinculaAutomaticamente",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.DatabasePaging_UsesSqlLimitInsteadOfLoadingAllRows",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.DistantPage_ReturnsEmptyArrayWithoutOverflow(path: \"/api/clinicas\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Tutor_FluxoAdministrativo_PreservaVinculosERegras",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_RecursoDeOutroTutor_Retorna404(path: \"/api/clinicas/2\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.HiddenPet_DoesNotCallEventsRepository(path: \"/api/pets/2/eventos/000000000000000000000001\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.InvalidQuery_Returns400(path: \"/api/pets?speciesId=-1\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.ExceptionHandler_ClassifiesAndLogsWithoutExposingDetails(kind: \"unexpected\", expected: 500)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/especies/1\", expected: 200)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Login_SenhaIncorreta_Retorna401",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Health_ServicoExternoFora_Retorna503SemDerrubarLiveness",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.GetMe_TutorAutenticado_DevolveIdentidade",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ArchitectureAndOracleTests.OracleMappings_AreCompatibleWithTheExistingMigrationSnapshot",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.ResourceResponses_ExposeResolvableSelfLinks(path: \"/api/racas/1\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.PresentationRegressionTests.UpdateMissingOrHiddenTutor_Returns404AndPreservesOwnerData(username: \"carlos@petjourney.com\", id: 2)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Health_ExcecaoExterna_Retorna503",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CorrelationIdInformado_DevolveMesmoIdentificador",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.InvalidQuery_Returns400(path: \"/api/tutores?pageSize=0\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Events_RecordActualAuthorAndResolvableLocation(username: \"admin.petfeliz@petjourney.com\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_TokenAdulterado_Retorna401",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Pet_OutraClinica_NaoAlteraRegistro(method: \"DELETE\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Reminder_OutOfScope_CannotBeChanged(method: \"DELETE\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.GetPets_TelemetriaAtiva_EmiteSpanDeServicoEMetricas",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.GetPets_PerfilAutenticado_ListaSomenteEscopo(username: \"admin.saudeanimal@petjourney.com\", expectedPet: 2)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/racas/99\", expected: 404)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_ClinicaAutenticada_IsolaListagens(path: \"/api/tutores\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_ClinicaAutenticada_IsolaListagens(path: \"/api/clinicas\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.InvalidQuery_Returns400(path: \"/api/lembretes?status=INVALIDO\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.MongoRealTests.Api_WriteReadRestartFilterAndIndex_WorkAgainstRealMongo",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.InvalidQuery_Returns400(path: \"/api/clinicas?sortBy=email\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.ExceptionHandler_ClassifiesAndLogsWithoutExposingDetails(kind: \"unavailable\", expected: 503)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.OracleRealTests.OracleSchema_ConnectsHasNoPendingMigrationsAndReadsMappedTables",
+          "outcome": "NotExecuted"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PutReminder_DataPassada_RejeitaSemModificar",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.GetEventos_OutroTutor_Retorna404SemConsultarMongo",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/especies/99\", expected: 404)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PostPet_CatalogoOuSexoInvalido_Retorna400(species: 99, breed: null, sex: \"M\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_ClinicaAutenticada_IsolaListagens(path: \"/api/lembretes\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PutPet_TrocaDeTutor_RejeitaTransferencia",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Health_Diagnostico_AdminVeDependenciasETutorRecebe403",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PostTutor_EmailOutraClinica_Retorna409SemExporDados",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Clinic_CannotReadOtherClinic(path: \"/api/pets/2\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_RecursoDeOutroTutor_Retorna404(path: \"/api/tutores/2\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Clinic_CannotReadOtherClinic(path: \"/api/tutores/2/pets\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.ResourceResponses_ExposeResolvableSelfLinks(path: \"/api/especies/1\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.GetPets_PerfilAutenticado_ListaSomenteEscopo(username: \"carlos@petjourney.com\", expectedPet: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/clinicas/1\", expected: 200)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/especies/1/racas\", expected: 200)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.PresentationRegressionTests.DeleteMissingTutor_Returns404WithReadableMessage",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.MongoRealTests.OtherTenant_CannotReadPersistedEvent",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PostPet_CatalogoOuSexoInvalido_Retorna400(species: 1, breed: null, sex: \"X\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Events_RecordActualAuthorAndResolvableLocation(username: \"dr.joao@petjourney.com\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.InvalidQuery_Returns400(path: \"/api/especies?page=-1\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Pet_OutraClinica_NaoAlteraRegistro(method: \"PUT\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_SemToken_Retorna401(path: \"/api/tutores\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.HiddenPet_DoesNotCallEventsRepository(path: \"/api/pets/2/eventos\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.InvalidQuery_Returns400(path: \"/api/pets?sortBy=untrusted\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_FalhaDePersistencia_Retorna500Correlacionado",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ArchitectureAndOracleTests.OracleModelAndMigrations_GenerateSqlWithoutConnectingToDatabase",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.DistantPage_ReturnsEmptyArrayWithoutOverflow(path: \"/api/racas\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.ResourceResponses_ExposeResolvableSelfLinks(path: \"/api/clinicas/1\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.GetPets_PerfilAutenticado_ListaSomenteEscopo(username: \"admin.petfeliz@petjourney.com\", expectedPet: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.DistantPage_ReturnsEmptyArrayWithoutOverflow(path: \"/api/especies\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Reminder_OutOfScope_CannotBeChanged(method: \"PUT\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.ResourceResponses_ExposeResolvableSelfLinks(path: \"/api/tutores/1\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/tutores/1\", expected: 200)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/especies/99/racas\", expected: 404)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_SemToken_Retorna401(path: \"/auth/me\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Filters_ApplyToAllMainCollections(path: \"/api/lembretes?petId=2&status=PENDENTE\", property: \"idLembrete\", id: 2)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Swagger_DescribesNewQueriesLinksAndClinicalResourceRoute",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.MongoRealTests.UnavailableMongo_Readiness503Liveness200AndHiddenPet404",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Filters_ApplyToAllMainCollections(path: \"/api/especies?name=Gato\", property: \"idEspecie\", id: 2)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.PresentationRegressionTests.UpdateMissingOrHiddenTutor_Returns404AndPreservesOwnerData(username: \"admin.petfeliz@petjourney.com\", id: 2)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_SemToken_Retorna401(path: \"/api/pets\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PostPet_OutroTutor_RejeitaSemPersistir",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.PresentationRegressionTests.UpdateMissingOrHiddenTutor_Returns404AndPreservesOwnerData(username: \"admin.sistema@petjourney.com\", id: 999)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Clinic_CannotReadOtherClinic(path: \"/api/tutores/2\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.InvalidQuery_Returns400(path: \"/api/racas?speciesId=0\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Veterinarian_ReadsSameReminderThroughBothRoutes",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.InvalidQuery_Returns400(path: \"/api/pets?sex=X\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_RecursoDeOutroTutor_Retorna404(path: \"/api/pets/2/timeline?mes=9&ano=2026\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.EqualSortValues_UseIdAsTieBreaker",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_RecursoDeOutroTutor_Retorna404(path: \"/api/lembretes/2\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PostPet_CorpoInvalido_Retorna400",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.PostEventos_TutorSemPapelClinico_Retorna403",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.EventContent_IsValidatedAfterTrimming(type: \"Consulta\", description: \" a\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.Filters_ApplyToAllMainCollections(path: \"/api/racas?speciesId=1&name=Golden\", property: \"idRaca\", id: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.ExceptionHandler_ClassifiesAndLogsWithoutExposingDetails(kind: \"conflict\", expected: 409)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.GetPets_PerfilAutenticado_ListaSomenteEscopo(username: \"ana@petjourney.com\", expectedPet: 2)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.DistantPage_ReturnsEmptyArrayWithoutOverflow(path: \"/api/tutores\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.GetPets_PerfilAutenticado_ListaSomenteEscopo(username: \"dr.joao@petjourney.com\", expectedPet: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Get_CatalogosEConsultasLegadas_RespeitaContrato(path: \"/api/tutores/2/pets\", expected: 404)",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.ApiTests.Health_DependenciasDisponiveis_Retorna200(path: \"/health/ready\")",
+          "outcome": "Passed"
+        },
+        {
+          "test": "PetJourney.IntegrationTests.Sprint4RegressionTests.ResourceResponses_ExposeResolvableSelfLinks(path: \"/api/pets/1\")",
+          "outcome": "Passed"
+        }
+      ]
+    }
+  ]
+}

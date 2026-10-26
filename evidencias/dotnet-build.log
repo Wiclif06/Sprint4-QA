@@ -1,0 +1,12 @@
+  PetJourney.Domain -> .\api\src\PetJourney.Domain\bin\Release\net8.0\PetJourney.Domain.dll
+  PetJourney.Application -> .\api\src\PetJourney.Application\bin\Release\net8.0\PetJourney.Application.dll
+  PetJourney.Infrastructure -> .\api\src\PetJourney.Infrastructure\bin\Release\net8.0\PetJourney.Infrastructure.dll
+  PetJourneyTutorApi -> .\api\src\PetJourneyTutorApi\bin\Release\net8.0\PetJourneyTutorApi.dll
+  PetJourney.UnitTests -> .\api\tests\PetJourney.UnitTests\bin\Release\net8.0\PetJourney.UnitTests.dll
+  PetJourney.IntegrationTests -> .\api\tests\PetJourney.IntegrationTests\bin\Release\net8.0\PetJourney.IntegrationTests.dll
+
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
+
+Tempo Decorrido 00:00:17.22

@@ -1,0 +1,986 @@
+{
+  "info": {
+    "name": "PetJourney QA Sprint 4 — regressão executável",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "API .NET revisada. Requer banco demo QA isolado. IDs obtidos das respostas. CRUD confirmado por consultas posteriores. Não executar em produção."
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "PRE01 | Login do segundo tutor",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"{{usernameAna}}\",\"password\":\"{{password}}\"}"
+        },
+        "auth": {
+          "type": "noauth"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "const d=pm.response.json(); pm.test('Token de Ana presente',()=>pm.expect(d.token).to.be.a('string').and.not.empty); pm.environment.set('tokenAna',d.token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "PRE02 | Identidade do segundo tutor",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/auth/me",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{tokenAna}}",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "const d=pm.response.json(); pm.test('Tutor B válido',()=>{pm.expect(d.role).to.eql('TUTOR');pm.expect(d.tutorId).to.be.above(0)});pm.environment.set('otherTutorId',d.tutorId);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "PRE03 | Pet do segundo tutor",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{tokenAna}}",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "const d=pm.response.json();pm.test('Fixture de Ana existente e isolada',()=>{pm.expect(d).to.have.lengthOf(1);pm.expect(d[0].idTutor).to.eql(Number(pm.environment.get('otherTutorId')))});pm.environment.set('otherPetId',d[0].idPet);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT001 | Login válido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"{{username}}\",\"password\":\"{{password}}\"}"
+        },
+        "auth": {
+          "type": "noauth"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "const d=pm.response.json();pm.test('Token presente',()=>pm.expect(d.token).to.be.a('string').and.not.empty);pm.environment.set('token',d.token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT003 | Identidade do tutor",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/auth/me"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "const d=pm.response.json();pm.test('Perfil e identidade distintos',()=>{pm.expect(d.role).to.eql('TUTOR');pm.expect(d.tutorId).to.be.above(0);pm.expect(d.tutorId).not.to.eql(Number(pm.environment.get('otherTutorId')))});pm.environment.set('tutorId',d.tutorId);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT004 | Listagem isolada de pets",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "const d=pm.response.json();pm.test('Fixture não vazia e somente tutor A',()=>{pm.expect(d).to.have.lengthOf(1);pm.expect(d.every(x=>x.idTutor===Number(pm.environment.get('tutorId')))).to.eql(true);pm.expect(d.some(x=>x.idPet===Number(pm.environment.get('otherPetId')))).to.eql(false)});pm.environment.set('ownPetId',d[0].idPet);pm.environment.set('speciesId',d[0].idEspecie);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT002 | Credencial inválida",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"{{username}}\",\"password\":\"senha-incorreta\"}"
+        },
+        "auth": {
+          "type": "noauth"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 401',()=>pm.response.to.have.status(401));",
+              "pm.test('Sem token novo',()=>pm.expect(pm.response.text()).not.to.match(/\"token\"\\s*:/));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT006 | Escrita sem autenticação",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nmPet\":\"QA-Aurora\",\"dsSexo\":\"F\",\"idTutor\":{{tutorId}},\"idEspecie\":{{speciesId}}}"
+        },
+        "auth": {
+          "type": "noauth"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 401',()=>pm.response.to.have.status(401));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT005 | Pet inexistente na base QA",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/2147483647"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 404',()=>pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT007 | Campos obrigatórios vazios",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nmPet\":\"\",\"dsSexo\":\"\",\"idTutor\":{{tutorId}},\"idEspecie\":{{speciesId}}}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if(pm.environment.get(\"allowWriteTests\")!==\"true\") { throw new Error(\"Use somente BD QA isolado e allowWriteTests=true; este fluxo exige CRUD.\"); }"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 400',()=>pm.response.to.have.status(400));",
+              "pm.test('Erros de validação',()=>pm.expect(pm.response.json().errors).to.be.an('object'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT019a | Detalhe de outro tutor bloqueado",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/{{otherPetId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 404',()=>pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT019b | Lembretes de outro tutor bloqueados",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/{{otherPetId}}/lembretes"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 404',()=>pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT019c | Timeline de outro tutor bloqueada",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/{{otherPetId}}/timeline?mes=11&ano=2026"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 404',()=>pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT017 | Liveness",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/health/live",
+        "auth": {
+          "type": "noauth"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "pm.test('Estado Healthy',()=>pm.expect(pm.response.text()).to.eql('Healthy'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT018a | Readiness sem API clínica",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/health/ready",
+        "auth": {
+          "type": "noauth"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 503',()=>pm.response.to.have.status(503));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "PRE04 | Login administrativo para diagnóstico",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"admin.sistema@petjourney.com\",\"password\":\"{{password}}\"}"
+        },
+        "auth": {
+          "type": "noauth"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "pm.environment.set('tokenAdmin',pm.response.json().token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT018b | Causa da indisponibilidade",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/health",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{tokenAdmin}}",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 503',()=>pm.response.to.have.status(503));",
+              "const d=pm.response.json();pm.test('Banco saudável e dependência clínica indisponível',()=>{pm.expect(d.status).to.eql('Unhealthy');pm.expect(d.checks.find(x=>x.name==='clinical-api').status).to.eql('Unhealthy');pm.expect(d.checks.find(x=>x.name==='database').status).to.eql('Healthy')});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT008a | Criar pet de QA",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nmPet\":\"QA-Aurora\",\"dsSexo\":\"F\",\"idTutor\":{{tutorId}},\"idEspecie\":{{speciesId}}}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if(pm.environment.get(\"allowWriteTests\")!==\"true\") { throw new Error(\"Use somente BD QA isolado e allowWriteTests=true; este fluxo exige CRUD.\"); }"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 201',()=>pm.response.to.have.status(201));",
+              "const d=pm.response.json();pm.test('ID e proprietário válidos',()=>{pm.expect(d.idPet).to.be.above(0);pm.expect(d.idTutor).to.eql(Number(pm.environment.get('tutorId')))});pm.environment.set('qaPetId',d.idPet);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT008b | Confirmar cadastro persistido",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/{{qaPetId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "pm.test('Nome persistido',()=>pm.expect(pm.response.json().nmPet).to.eql('QA-Aurora'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT009a | Atualizar pet",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/{{qaPetId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"idPet\":{{qaPetId}},\"nmPet\":\"QA-Aurora-Editada\",\"dsSexo\":\"F\",\"idTutor\":{{tutorId}},\"idEspecie\":{{speciesId}}}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if(pm.environment.get(\"allowWriteTests\")!==\"true\") { throw new Error(\"Use somente BD QA isolado e allowWriteTests=true; este fluxo exige CRUD.\"); }"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 204',()=>pm.response.to.have.status(204));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT009b | Confirmar atualização persistida",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/{{qaPetId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "pm.test('Nome atualizado no banco',()=>pm.expect(pm.response.json().nmPet).to.eql('QA-Aurora-Editada'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT014a | Criar lembrete no próprio pet QA",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/lembretes",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"idPet\":{{qaPetId}},\"dsTipo\":\"VACINA\",\"dsDescricao\":\"QA - vacina anual\",\"dtLembrete\":\"2026-11-10T09:00:00\",\"dsStatus\":\"PENDENTE\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if(pm.environment.get(\"allowWriteTests\")!==\"true\") { throw new Error(\"Use somente BD QA isolado e allowWriteTests=true; este fluxo exige CRUD.\"); }"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 201',()=>pm.response.to.have.status(201));",
+              "const d=pm.response.json();pm.test('ID positivo e pet correto',()=>{pm.expect(d.idLembrete).to.be.above(0);pm.expect(d.idPet).to.eql(Number(pm.environment.get('qaPetId')))});pm.environment.set('qaReminderId',d.idLembrete);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT014b | Confirmar lembrete persistido",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/lembretes/{{qaReminderId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "pm.test('Descrição e estado persistidos',()=>{const d=pm.response.json();pm.expect(d.dsDescricao).to.eql('QA - vacina anual');pm.expect(d.dsStatus).to.eql('PENDENTE')});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT015a | Concluir lembrete",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/lembretes/{{qaReminderId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"idLembrete\":{{qaReminderId}},\"idPet\":{{qaPetId}},\"dsTipo\":\"VACINA\",\"dsDescricao\":\"QA - vacina anual\",\"dtLembrete\":\"2026-11-10T09:00:00\",\"dsStatus\":\"CONCLUIDO\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if(pm.environment.get(\"allowWriteTests\")!==\"true\") { throw new Error(\"Use somente BD QA isolado e allowWriteTests=true; este fluxo exige CRUD.\"); }"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 204',()=>pm.response.to.have.status(204));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT015b | Confirmar conclusão persistida",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/lembretes/{{qaReminderId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "pm.test('Estado CONCLUIDO no banco',()=>pm.expect(pm.response.json().dsStatus).to.eql('CONCLUIDO'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT011 | Timeline com evento controlado",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/{{qaPetId}}/timeline?mes=11&ano=2026"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "const d=pm.response.json();pm.test('Evento no período e concluído',()=>{pm.expect(d).to.have.lengthOf(1);pm.expect(d[0].descricao).to.eql('QA - vacina anual');pm.expect(d[0].status).to.eql('CONCLUIDO');pm.expect(d[0].data).to.include('2026-11-10')});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT012 | Mês inválido",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/{{qaPetId}}/timeline?mes=13&ano=2026"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 400',()=>pm.response.to.have.status(400));",
+              "pm.test('Mensagem exata de domínio',()=>pm.expect(pm.response.text()).to.include('O mês deve estar entre 1 e 12.'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT013 | Lembretes do pet controlado",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/{{qaPetId}}/lembretes"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "const d=pm.response.json();pm.test('Somente lembrete criado',()=>{pm.expect(d).to.have.lengthOf(1);pm.expect(d[0].idLembrete).to.eql(Number(pm.environment.get('qaReminderId')));pm.expect(d[0].idPet).to.eql(Number(pm.environment.get('qaPetId')))});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT016a | Excluir lembrete QA",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/lembretes/{{qaReminderId}}"
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if(pm.environment.get(\"allowWriteTests\")!==\"true\") { throw new Error(\"Use somente BD QA isolado e allowWriteTests=true; este fluxo exige CRUD.\"); }"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 204',()=>pm.response.to.have.status(204));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT016b | Confirmar exclusão do lembrete",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/lembretes/{{qaReminderId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 404',()=>pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT010a | Excluir pet QA sem dependências",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/{{qaPetId}}"
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if(pm.environment.get(\"allowWriteTests\")!==\"true\") { throw new Error(\"Use somente BD QA isolado e allowWriteTests=true; este fluxo exige CRUD.\"); }"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 204',()=>pm.response.to.have.status(204));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT010b | Confirmar exclusão do pet",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets/{{qaPetId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 404',()=>pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "POS01 | Fixture de Carlos preservada",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/pets"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200',()=>pm.response.to.have.status(200));",
+              "const d=pm.response.json();pm.test('Base retornou ao estado inicial',()=>{pm.expect(d).to.have.lengthOf(1);pm.expect(d[0].idPet).to.eql(Number(pm.environment.get('ownPetId')))});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

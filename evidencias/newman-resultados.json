@@ -1,0 +1,554 @@
+{
+  "startedAt": "2026-10-26T19:10:14.404Z",
+  "finishedAt": "2026-10-26T19:11:15.992Z",
+  "environment": "Development / SQLite / Demo isolado; API clínica ausente intencionalmente em CT018; sem Oracle real",
+  "tool": "Newman 6.2.1",
+  "requests": 33,
+  "assertions": 53,
+  "failedAssertions": 0,
+  "failures": [],
+  "executions": [
+    {
+      "name": "PRE01 | Login do segundo tutor",
+      "method": "POST",
+      "url": "http://127.0.0.1:5188/auth/login",
+      "status": 200,
+      "timeMs": 470,
+      "body": "[Token omitido]",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Token de Ana presente",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "PRE02 | Identidade do segundo tutor",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/auth/me",
+      "status": 200,
+      "timeMs": 13,
+      "body": "{\"username\":\"ana@petjourney.com\",\"role\":\"TUTOR\",\"clinicId\":null,\"tutorId\":2,\"veterinarianId\":null}",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Tutor B válido",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "PRE03 | Pet do segundo tutor",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets",
+      "status": 200,
+      "timeMs": 108,
+      "body": "[{\"idPet\":2,\"nmPet\":\"Mia\",\"dtNascimento\":null,\"dsSexo\":\"F\",\"idTutor\":2,\"idEspecie\":2,\"idRaca\":null,\"idClinica\":2,\"_links\":{\"self\":{\"href\":\"/api/pets/2\",\"method\":\"GET\"},\"reminders\":{\"href\":\"/api/pets/2/lembretes\",\"method\":\"GET\"},\"events\":{\"href\":\"/api/pets/2/eventos\",\"method\":\"GET\"},\"update\":{\"href\":\"/api/pets/2\",\"method\":\"PUT\"},\"delete\":{\"href\":\"/api/pets/2\",\"method\":\"DELETE\"}}}]",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Fixture de Ana existente e isolada",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT001 | Login válido",
+      "method": "POST",
+      "url": "http://127.0.0.1:5188/auth/login",
+      "status": 200,
+      "timeMs": 131,
+      "body": "[Token omitido]",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Token presente",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT003 | Identidade do tutor",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/auth/me",
+      "status": 200,
+      "timeMs": 8,
+      "body": "{\"username\":\"carlos@petjourney.com\",\"role\":\"TUTOR\",\"clinicId\":null,\"tutorId\":1,\"veterinarianId\":null}",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Perfil e identidade distintos",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT004 | Listagem isolada de pets",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets",
+      "status": 200,
+      "timeMs": 568,
+      "body": "[{\"idPet\":1,\"nmPet\":\"Rex\",\"dtNascimento\":null,\"dsSexo\":\"M\",\"idTutor\":1,\"idEspecie\":1,\"idRaca\":1,\"idClinica\":1,\"_links\":{\"self\":{\"href\":\"/api/pets/1\",\"method\":\"GET\"},\"reminders\":{\"href\":\"/api/pets/1/lembretes\",\"method\":\"GET\"},\"events\":{\"href\":\"/api/pets/1/eventos\",\"method\":\"GET\"},\"update\":{\"href\":\"/api/pets/1\",\"method\":\"PUT\"},\"delete\":{\"href\":\"/api/pets/1\",\"method\":\"DELETE\"}}}]",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Fixture não vazia e somente tutor A",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT002 | Credencial inválida",
+      "method": "POST",
+      "url": "http://127.0.0.1:5188/auth/login",
+      "status": 401,
+      "timeMs": 108,
+      "body": "{\"message\":\"Credenciais inválidas.\"}",
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "passed": true
+        },
+        {
+          "name": "Sem token novo",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT006 | Escrita sem autenticação",
+      "method": "POST",
+      "url": "http://127.0.0.1:5188/api/pets",
+      "status": 401,
+      "timeMs": 21,
+      "body": "",
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT005 | Pet inexistente na base QA",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets/2147483647",
+      "status": 404,
+      "timeMs": 31,
+      "body": "{\"title\":\"Pet não encontrado.\",\"status\":404,\"instance\":\"/api/pets/2147483647\",\"correlationId\":\"1b4e338b305944ac9fff8527023ac0bd\"}",
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT007 | Campos obrigatórios vazios",
+      "method": "POST",
+      "url": "http://127.0.0.1:5188/api/pets",
+      "status": 400,
+      "timeMs": 116,
+      "body": "{\"type\":\"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\"title\":\"One or more validation errors occurred.\",\"status\":400,\"errors\":{\"NmPet\":[\"O nome do pet é obrigatório.\"],\"DsSexo\":[\"O sexo do pet é obrigatório.\"]},\"traceId\":\"00-735c6b1c0ecb9fb8e754970dcbf412ad-fd819ffa847c1273-01\",\"correlationId\":\"5fb128945fb04eeda52543e687205f12\"}",
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "passed": true
+        },
+        {
+          "name": "Erros de validação",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT019a | Detalhe de outro tutor bloqueado",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets/2",
+      "status": 404,
+      "timeMs": 26,
+      "body": "{\"title\":\"Pet não encontrado.\",\"status\":404,\"instance\":\"/api/pets/2\",\"correlationId\":\"40ae8225c8fc4ad48228d760d78c41a0\"}",
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT019b | Lembretes de outro tutor bloqueados",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets/2/lembretes",
+      "status": 404,
+      "timeMs": 9,
+      "body": "{\"title\":\"Pet não encontrado.\",\"status\":404,\"instance\":\"/api/pets/2/lembretes\",\"correlationId\":\"5fc952498aed48418dbb1e2362290ed4\"}",
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT019c | Timeline de outro tutor bloqueada",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets/2/timeline?mes=11&ano=2026",
+      "status": 404,
+      "timeMs": 8,
+      "body": "{\"title\":\"Pet não encontrado.\",\"status\":404,\"instance\":\"/api/pets/2/timeline\",\"correlationId\":\"749752a364674a95a0efe089c56e83f3\"}",
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT017 | Liveness",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/health/live",
+      "status": 200,
+      "timeMs": 2,
+      "body": "Healthy",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Estado Healthy",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT018a | Readiness sem API clínica",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/health/ready",
+      "status": 503,
+      "timeMs": 35,
+      "body": "Unhealthy",
+      "assertions": [
+        {
+          "name": "HTTP 503",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "PRE04 | Login administrativo para diagnóstico",
+      "method": "POST",
+      "url": "http://127.0.0.1:5188/auth/login",
+      "status": 200,
+      "timeMs": 150,
+      "body": "[Token omitido]",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT018b | Causa da indisponibilidade",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/health",
+      "status": 503,
+      "timeMs": 21,
+      "body": "{\"status\":\"Unhealthy\",\"durationMs\":5.3737,\"checks\":[{\"name\":\"database\",\"status\":\"Healthy\",\"description\":\"Banco acessível.\",\"durationMs\":3.3179},{\"name\":\"clinical-api\",\"status\":\"Unhealthy\",\"description\":\"Endpoint de saúde da API clínica não configurado.\",\"durationMs\":0.0524}]}",
+      "assertions": [
+        {
+          "name": "HTTP 503",
+          "passed": true
+        },
+        {
+          "name": "Banco saudável e dependência clínica indisponível",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT008a | Criar pet de QA",
+      "method": "POST",
+      "url": "http://127.0.0.1:5188/api/pets",
+      "status": 201,
+      "timeMs": 50,
+      "body": "{\"idPet\":6,\"nmPet\":\"QA-Aurora\",\"dtNascimento\":null,\"dsSexo\":\"F\",\"idTutor\":1,\"idEspecie\":1,\"idRaca\":null,\"idClinica\":null,\"_links\":{\"self\":{\"href\":\"/api/pets/6\",\"method\":\"GET\"},\"reminders\":{\"href\":\"/api/pets/6/lembretes\",\"method\":\"GET\"},\"events\":{\"href\":\"/api/pets/6/eventos\",\"method\":\"GET\"},\"update\":{\"href\":\"/api/pets/6\",\"method\":\"PUT\"},\"delete\":{\"href\":\"/api/pets/6\",\"method\":\"DELETE\"}}}",
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "passed": true
+        },
+        {
+          "name": "ID e proprietário válidos",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT008b | Confirmar cadastro persistido",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets/6",
+      "status": 200,
+      "timeMs": 4,
+      "body": "{\"idPet\":6,\"nmPet\":\"QA-Aurora\",\"dtNascimento\":null,\"dsSexo\":\"F\",\"idTutor\":1,\"idEspecie\":1,\"idRaca\":null,\"idClinica\":null,\"_links\":{\"self\":{\"href\":\"/api/pets/6\",\"method\":\"GET\"},\"reminders\":{\"href\":\"/api/pets/6/lembretes\",\"method\":\"GET\"},\"events\":{\"href\":\"/api/pets/6/eventos\",\"method\":\"GET\"},\"update\":{\"href\":\"/api/pets/6\",\"method\":\"PUT\"},\"delete\":{\"href\":\"/api/pets/6\",\"method\":\"DELETE\"}}}",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Nome persistido",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT009a | Atualizar pet",
+      "method": "PUT",
+      "url": "http://127.0.0.1:5188/api/pets/6",
+      "status": 204,
+      "timeMs": 12,
+      "body": "",
+      "assertions": [
+        {
+          "name": "HTTP 204",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT009b | Confirmar atualização persistida",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets/6",
+      "status": 200,
+      "timeMs": 15,
+      "body": "{\"idPet\":6,\"nmPet\":\"QA-Aurora-Editada\",\"dtNascimento\":null,\"dsSexo\":\"F\",\"idTutor\":1,\"idEspecie\":1,\"idRaca\":null,\"idClinica\":null,\"_links\":{\"self\":{\"href\":\"/api/pets/6\",\"method\":\"GET\"},\"reminders\":{\"href\":\"/api/pets/6/lembretes\",\"method\":\"GET\"},\"events\":{\"href\":\"/api/pets/6/eventos\",\"method\":\"GET\"},\"update\":{\"href\":\"/api/pets/6\",\"method\":\"PUT\"},\"delete\":{\"href\":\"/api/pets/6\",\"method\":\"DELETE\"}}}",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Nome atualizado no banco",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT014a | Criar lembrete no próprio pet QA",
+      "method": "POST",
+      "url": "http://127.0.0.1:5188/api/lembretes",
+      "status": 201,
+      "timeMs": 22,
+      "body": "{\"idLembrete\":6,\"idPet\":6,\"dsTipo\":\"VACINA\",\"dsDescricao\":\"QA - vacina anual\",\"dtLembrete\":\"2026-11-10T09:00:00\",\"dtNotificado\":null,\"dsStatus\":\"PENDENTE\",\"_links\":{\"self\":{\"href\":\"/api/lembretes/6\",\"method\":\"GET\"},\"update\":{\"href\":\"/api/lembretes/6\",\"method\":\"PUT\"},\"delete\":{\"href\":\"/api/lembretes/6\",\"method\":\"DELETE\"}}}",
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "passed": true
+        },
+        {
+          "name": "ID positivo e pet correto",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT014b | Confirmar lembrete persistido",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/lembretes/6",
+      "status": 200,
+      "timeMs": 8,
+      "body": "{\"idLembrete\":6,\"idPet\":6,\"dsTipo\":\"VACINA\",\"dsDescricao\":\"QA - vacina anual\",\"dtLembrete\":\"2026-11-10T09:00:00\",\"dtNotificado\":null,\"dsStatus\":\"PENDENTE\",\"_links\":{\"self\":{\"href\":\"/api/lembretes/6\",\"method\":\"GET\"},\"update\":{\"href\":\"/api/lembretes/6\",\"method\":\"PUT\"},\"delete\":{\"href\":\"/api/lembretes/6\",\"method\":\"DELETE\"}}}",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Descrição e estado persistidos",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT015a | Concluir lembrete",
+      "method": "PUT",
+      "url": "http://127.0.0.1:5188/api/lembretes/6",
+      "status": 204,
+      "timeMs": 16,
+      "body": "",
+      "assertions": [
+        {
+          "name": "HTTP 204",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT015b | Confirmar conclusão persistida",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/lembretes/6",
+      "status": 200,
+      "timeMs": 11,
+      "body": "{\"idLembrete\":6,\"idPet\":6,\"dsTipo\":\"VACINA\",\"dsDescricao\":\"QA - vacina anual\",\"dtLembrete\":\"2026-11-10T09:00:00\",\"dtNotificado\":null,\"dsStatus\":\"CONCLUIDO\",\"_links\":{\"self\":{\"href\":\"/api/lembretes/6\",\"method\":\"GET\"},\"update\":{\"href\":\"/api/lembretes/6\",\"method\":\"PUT\"},\"delete\":{\"href\":\"/api/lembretes/6\",\"method\":\"DELETE\"}}}",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Estado CONCLUIDO no banco",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT011 | Timeline com evento controlado",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets/6/timeline?mes=11&ano=2026",
+      "status": 200,
+      "timeMs": 15,
+      "body": "[{\"tipo\":\"VACINA\",\"descricao\":\"QA - vacina anual\",\"data\":\"2026-11-10T09:00:00\",\"status\":\"CONCLUIDO\"}]",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Evento no período e concluído",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT012 | Mês inválido",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets/6/timeline?mes=13&ano=2026",
+      "status": 400,
+      "timeMs": 9,
+      "body": "{\"title\":\"O mês deve estar entre 1 e 12.\",\"status\":400,\"instance\":\"/api/pets/6/timeline\",\"correlationId\":\"f188a0e3ad8b48a6b328feb9998a0066\"}",
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "passed": true
+        },
+        {
+          "name": "Mensagem exata de domínio",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT013 | Lembretes do pet controlado",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets/6/lembretes",
+      "status": 200,
+      "timeMs": 13,
+      "body": "[{\"idLembrete\":6,\"idPet\":6,\"dsTipo\":\"VACINA\",\"dsDescricao\":\"QA - vacina anual\",\"dtLembrete\":\"2026-11-10T09:00:00\",\"dtNotificado\":null,\"dsStatus\":\"CONCLUIDO\",\"_links\":{\"self\":{\"href\":\"/api/lembretes/6\",\"method\":\"GET\"},\"update\":{\"href\":\"/api/lembretes/6\",\"method\":\"PUT\"},\"delete\":{\"href\":\"/api/lembretes/6\",\"method\":\"DELETE\"}}}]",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Somente lembrete criado",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT016a | Excluir lembrete QA",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:5188/api/lembretes/6",
+      "status": 204,
+      "timeMs": 11,
+      "body": "",
+      "assertions": [
+        {
+          "name": "HTTP 204",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT016b | Confirmar exclusão do lembrete",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/lembretes/6",
+      "status": 404,
+      "timeMs": 6,
+      "body": "{\"title\":\"Lembrete não encontrado.\",\"status\":404,\"instance\":\"/api/lembretes/6\",\"correlationId\":\"495d182adad3495c9a41d70948224941\"}",
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT010a | Excluir pet QA sem dependências",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:5188/api/pets/6",
+      "status": 204,
+      "timeMs": 8,
+      "body": "",
+      "assertions": [
+        {
+          "name": "HTTP 204",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "CT010b | Confirmar exclusão do pet",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets/6",
+      "status": 404,
+      "timeMs": 7,
+      "body": "{\"title\":\"Pet não encontrado.\",\"status\":404,\"instance\":\"/api/pets/6\",\"correlationId\":\"ceb3fff8751d44519d2dd538f291acfc\"}",
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "POS01 | Fixture de Carlos preservada",
+      "method": "GET",
+      "url": "http://127.0.0.1:5188/api/pets",
+      "status": 200,
+      "timeMs": 11,
+      "body": "[{\"idPet\":1,\"nmPet\":\"Rex\",\"dtNascimento\":null,\"dsSexo\":\"M\",\"idTutor\":1,\"idEspecie\":1,\"idRaca\":1,\"idClinica\":1,\"_links\":{\"self\":{\"href\":\"/api/pets/1\",\"method\":\"GET\"},\"reminders\":{\"href\":\"/api/pets/1/lembretes\",\"method\":\"GET\"},\"events\":{\"href\":\"/api/pets/1/eventos\",\"method\":\"GET\"},\"update\":{\"href\":\"/api/pets/1\",\"method\":\"PUT\"},\"delete\":{\"href\":\"/api/pets/1\",\"method\":\"DELETE\"}}}]",
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Base retornou ao estado inicial",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}
