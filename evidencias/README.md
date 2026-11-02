@@ -1,5 +1,7 @@
 # Evidências
 
+- [qa-video.mp4](qa-video.mp4): vídeo de QA fornecido no [Google Drive](https://drive.google.com/file/d/1VP6PpiePdZgVUl--EsrDQZbP10YhD8hZ/view), armazenado com Git LFS. Para baixar com Git, instale o Git LFS e execute `git lfs pull`.
+
 - `execucao-qa.mp4`: capturas periódicas reais do painel Newman durante configuração, execução e conclusão; sem áudio.
 - `newman-resultados.json`: resultados da execução gravada, com códigos HTTP, tempos, corpos não sensíveis e asserções. Tokens omitidos.
 - `relatorio.html`: apresentação legível dos mesmos resultados; abrir no navegador.

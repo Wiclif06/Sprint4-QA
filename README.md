@@ -3,6 +3,7 @@
 Plano de testes e automação de APIs do PetJourney.
 
 - [Azure Boards](https://dev.azure.com/RM563254/PetJourney/_workitems) · [49 casos de teste](azure-boards/casos_publicados.csv)
+- [Vídeo de QA](evidencias/qa-video.mp4) · [Assistir no Google Drive](https://drive.google.com/file/d/1VP6PpiePdZgVUl--EsrDQZbP10YhD8hZ/view)
 - [Vídeo da automação](https://github.com/Wiclif06/Sprint4-QA/raw/refs/heads/develop/evidencias/execucao-qa.mp4)
 - [Resultados](evidencias/README.md) · [Rastreabilidade](documentacao/matriz_rastreabilidade.csv) · [Plano de validação](documentacao/release_plan.md)
 
